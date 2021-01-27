@@ -1,0 +1,12 @@
+Changelog for modJWT
+
+modJWT 1.0.0-beta
+---------------------------------
+Initial Version.
+See https://github.com/lokamaya/modJWT for more information.
+
+Sample resources included in this installation:
+- 1 Folder: /modjwt/
+- 3 JSON files: token.json, validate.json, custom.json
+
+Go to your root folder and edit /modjwt/

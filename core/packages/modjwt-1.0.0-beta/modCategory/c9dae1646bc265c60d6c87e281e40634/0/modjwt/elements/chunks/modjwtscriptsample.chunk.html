@@ -1,0 +1,194 @@
+<script>
+var _countClick = 0;
+var _actionVal = '';
+var L = window.location.href.split('#')[0]; 
+
+$(document).ready(function() {
+    if (!window.localStorage) {
+         _loggerJWT("Sorry, 'window.localStorage' not supported on your browser.");
+        _disableForm('modJWTForm', true);
+        return;
+    }
+
+    $(function () {
+        var msgs = '', data = ''; 
+        
+        $('#getToken').on('click', function(e){
+            if (localStorage.getItem("token")) {
+                alert("You already have Token on your localStorage.\nRemove it before creating a new one.");
+                return false;
+            } else {
+                var _token = null; msgs=''; data = {};
+
+                _countClick++;
+                _actionVal = this.formAction;
+                window.location.assign(L + "#" + _countClick + "~create");               
+                
+                $('#loggerData').text("");
+                $.ajax({
+                    url: _actionVal,
+                    crossDomain: false,  //remove this line if not needed or set to false
+                    type: 'GET',         //GET or POST get same result
+                    success: function (data) {
+                        msgs = JSON.stringify(data);
+                        if (data && typeof data._valid !== 'undefined') {
+                            if (data._valid === 1 && data.token !== null) { //here we check the Token
+                                _token = data.token;
+                                localStorage.setItem("token", _token);
+                                $('#loggerData').text("Token:\n" + _token);
+                            } else {
+                                msgs +=  " \n - Verify URL: " + _actionVal;
+                                msgs +=  " \n - Go to manager: edit the 'formaction' of blue link above!";
+                            }
+                        } else {
+                            msgs +=  " \n - unknown error";
+                        }
+                        _loggerJWT(msgs);
+                    },
+                    error: function (_request, _error, _text) {
+                        //console.log(arguments);
+                        $('#loggerData').text(_request.status + " " + _text);
+                        _loggerJWT(_request.status + " " + _text + "\nRequest: - " + _actionVal);
+                    }
+                });
+            }
+            event.preventDefault();
+        });    
+            
+        $('#valToken').on('click', function(e){
+            if (_token = localStorage.getItem("token")) {
+                _countClick++; _actionVal = this.formAction; msgs=''; data = ''; 
+                window.location.assign(L + "#" + _countClick + "~validate");
+                
+                $('#loggerData').text("");
+                
+                $.ajax({
+                    url: _actionVal,
+                    headers: {
+                        'Authorization': "Bearer " + _token        //important! pass token here
+                    },
+                    crossDomain: true,                             //remove this line if not needed or set to false
+                    type: 'GET',                                   //we dont need to post data, set Token in the header
+                    success: function (data) {
+                        msgs = JSON.stringify(data);
+                        if (data && typeof data._valid !== 'undefined') {
+                            if (data._valid === 1 && data.payload !== null) { //here we check the Payload
+                                $('#loggerData').text("Payload:\n" + JSON.stringify(data.payload));
+                            } else {
+                                msgs +=  " \n - seems you went to the wrong page";
+                            }
+                        } else {
+                            msgs +=  " \n - unknown error";
+                        }
+                        _loggerJWT(msgs);
+                    },
+                    error: function (_request, _error, _text) {
+                        //console.log(arguments);
+                        $('#loggerData').text(_request.status + " " + _text);
+                        _loggerJWT(_request.status + " " + _text + "\nRequest: - " + _actionVal);
+                    }
+                });
+            } else {
+                alert("There is no Token in your localStorage");
+                return false;
+            }
+            
+            $('#loggerData').text('');
+            _loggerJWT(msgs);
+            
+            event.preventDefault();
+        });    
+        
+        $('#cusToken').on('click', function(e){
+            if (_token = localStorage.getItem("token")) {
+                _countClick++; _actionVal = this.formAction; msgs=''; data = ''; 
+                window.location.assign(L + "#" + _countClick + "~custom");
+                
+                $('#loggerData').text("");
+                
+                $.ajax({
+                    url: _actionVal,
+                    headers: {
+                        'Authorization': "Bearer " + _token        //pass token here
+                    },
+                    crossDomain: true,                             //remove this line if not needed or set to false
+                    type: 'GET',                                   //we dont need to post data, set Token in the header
+                    success: function (data) {
+                        msgs = JSON.stringify(data);
+                        if (data && typeof data._valid !== 'undefined') {
+                            if (data._valid === 1 && data.retval !== null) { //here we check the retval
+                                $('#loggerData').text("Custom output (see jwtDecodeRunSnippet):\n" + JSON.stringify(data.retval));
+                            } else {
+                                msgs +=  " \n - seems you went to the wrong page";
+                            }
+                        } else {
+                            msgs +=  " \n - unknown error";
+                        }
+                        _loggerJWT(msgs);
+                    },
+                    error: function (_request, _error, _text) {
+                        //console.log(arguments);
+                        $('#loggerData').text(_request.status + " " + _text);
+                        _loggerJWT(_request.status + " " + _text + "\nRequest: - " + _actionVal);
+                    }
+                });
+            } else {
+                alert("Custom? Have you create the Token?");
+                return false;
+            }
+            
+            $('#loggerData').text('');
+            _loggerJWT(msgs);
+            
+            event.preventDefault();
+        });  
+        
+        $('#remToken').on('click', function(e){
+            if (_token = localStorage.getItem("token")) {
+                _countClick++;_actionVal = this.formAction; msgs=''; data = ''; 
+                window.location.assign(L + "#" + _countClick + "~remove");
+                
+                localStorage.removeItem("token");
+                msgs="Token removed from your localStorage";
+            } else {
+                alert("No Token. No, no...");
+                return false;
+            }
+            
+            $('#loggerData').text('');
+            _loggerJWT(msgs);
+            
+            event.preventDefault();
+        });
+        
+        $('#resetForm').on('click', function(e){
+            _countClick=0;_actionVal = 'reset'; msgs=''; data = ''; 
+            $('#logger').text('');
+            localStorage.removeItem("token");
+            window.location.assign(L+'#Logger');
+            
+            $('#loggerData').text('');
+            $('#logger').text('#Logger');
+        });
+    });
+});
+
+$(window).bind('beforeunload', function (event) { //detect hash change
+    localStorage.removeItem("token");
+});
+
+function _loggerJWT(val) {
+    var hash = window.location.hash.slice(1);
+    var Logs = "#" + hash;
+    if ((val).length>0) Logs += "\n" + val;
+    Logs += "\n\n" + $('#logger').val();
+    $('#logger').text(Logs);
+}
+
+function _disableForm(formId, yesNo) {
+   var f = document.getElementById(formId), s, opacity;
+   s = f.style; opacity = yesNo? '65' : '100'; 
+   s.opacity = s.MozOpacity = s.KhtmlOpacity = opacity/100; s.filter = 'alpha(opacity='+opacity+')';
+   for(var i=0; i<f.length; i++) f[i].disabled = yesNo;
+}
+</script>

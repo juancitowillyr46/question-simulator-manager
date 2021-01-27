@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="mytest" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM" version="1.1">
+	<object class="Test" table="test" extends="xPDOSimpleObject">
+		<field key="name" dbtype="varchar" precision="64" phptype="string" null="false" />
+		<field key="description" dbtype="varchar" precision="64" phptype="string" null="false" />
+		<field key="published" dbtype="int" precision="11" phptype="integer" null="false" />
+		<field key="actived" dbtype="tinyint" precision="1" phptype="integer" null="false" />
+	</object>
+</model>

@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'modjwt',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => 'c5ae32bb20e67b6ae86e3f46df8b7ff2',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'f29d4264e1a3d7afa5f9da32ba6e208b',
+  'native_key' => 'modjwt.secretkey',
+  'object' => '{"key":"modjwt.secretkey","value":"my-secret-key-please-change-b33c4de","xtype":"textfield","namespace":"modjwt","area":"modjwt_key","editedon":null,"name":"Secret Key","description":"Use this as <strong>Secret Key<\\/strong> for symmetric algorithm (i.e. HS256)"}',
+);

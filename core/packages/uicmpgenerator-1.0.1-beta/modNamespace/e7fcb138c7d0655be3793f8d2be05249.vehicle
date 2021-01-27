@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'name',
+  'preserve_keys' => true,
+  'update_object' => true,
+  'namespace' => 'uicmpgenerator',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => 'cf10aeb2e743c48c14a7145b31eb2cd2',
+  'package' => 'modx',
+  'class' => 'modNamespace',
+  'signature' => 'e7fcb138c7d0655be3793f8d2be05249',
+  'native_key' => 'uicmpgenerator',
+  'object' => '{"name":"uicmpgenerator","path":"{core_path}components\\/uicmpgenerator\\/","assets_path":"{assets_path}components\\/uicmpgenerator\\/"}',
+);

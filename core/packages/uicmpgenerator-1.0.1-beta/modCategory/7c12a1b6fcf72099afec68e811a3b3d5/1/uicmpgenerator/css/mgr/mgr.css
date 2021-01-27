@@ -1,0 +1,294 @@
+@font-face {
+    font-family: 'UICMPGenerator';
+    src: url('../mgr/fonts/UICMPGenerator.eot');
+    src: url('../mgr/fonts/UICMPGenerator?#iefix') format('embedded-opentype'),
+    url('../mgr/fonts/UICMPGenerator.woff') format('woff'),
+    url('../mgr/fonts/UICMPGenerator.ttf') format('truetype'),
+    url('../mgr/fonts/UICMPGenerator.svg#UICMPGenerator') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-family: "UICMPGenerator";
+    font-style: normal;
+    font-weight: normal;
+
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .2em;
+    text-align: center;
+    vertical-align: middle;
+     opacity: .5;
+
+    /* For safety - reset parent styles, that can break glyph codes*/
+    font-variant: normal;
+    text-transform: none;
+
+    /* fix buttons height, for twitter bootstrap */
+    line-height: 1em;
+
+    /* Animation center compensation - margins should be symmetric */
+    /* remove if not needed */
+    margin-left: .2em;
+
+    /* you can be more comfortable with increased icons size */
+     /*font-size: 120%;*/
+
+    /* Uncomment for 3D effect */
+     /*text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+    cursor: pointer;
+}
+
+[class^="icon-"]:hover:before, [class*=" icon-"]:hover:before { opacity: 1; }
+
+.uicmpg-layout-container {
+    height:		100%;
+    width:		100%;
+    min-height: 705px;
+}
+
+.uicmpg-table {
+   position: relative;
+   border-radius: 2px;
+   border: 2px solid #9acadf;
+   margin-bottom: 8px;
+   background: #fff;
+   transition: all .2s linear;
+}
+.uicmpg-table.ui-draggable-dragging {
+    transition: none;
+    z-index: 2;
+}
+
+.uicmpg-table-used,
+.uicmpg-table-hide {
+    display:  none;
+}
+
+.uicmpg-table:hover,
+.uicmpg-table.ui-draggable-dragging {
+    box-shadow: 0px 0px 6px 2px rgba(54, 151, 205, 0.4);
+}
+
+.uicmpg-table-title {
+    position: relative;
+    font-weight: bold;
+    padding: 3px 10px;
+    background: #3998c1;
+    color: #fff;
+    cursor: move;
+}
+
+.uicmpg-table-row {
+    padding: 0 10px;
+}
+.uicmpg-table-row:nth-child(odd) {
+    background: #fafafa;
+}
+.uicmpg-table-row {
+    display: none;
+    overflow: hidden;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+.uicmpg-table-field,
+.uicmpg-table-type {
+    display: inline-block;
+    padding: 2px 0;
+}
+.uicmpg-table-field { padding-right: 5px; }
+.uicmpg-table-field.key { font-weight: bold; }
+
+.uicmpg-table-type {
+    border-left: 1px solid #f2f2f2;
+    padding-left: 5px;
+    display: none;
+}
+
+.uicmpg-table.show-type .uicmpg-table-type { display: inline-block; }
+
+.uicmpg-table.show-type .uicmpg-table-field { min-width: 60%; }
+
+.uicmpg-table.show-fields .uicmpg-table-row {  display: block; }
+
+.uicmpg-table.show-fields .uicmpg-table-title { border-bottom: 1px solid #f2f2f2; }
+
+.uicmpg-table .uicmpg-act {
+    position: absolute;
+    top: 2px;
+    right: 5px;
+}
+
+.uicmpg-tool-bar {
+    margin-bottom: 10px;
+    text-align: right;
+    overflow: hidden;
+}
+
+.uicmpg-tool-bar .icon { font-size: 130%; }
+
+.uicmpg-search {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #f2f2f2;
+    border-radius: 20px;
+    padding: 0 5px 0 10px;
+    text-align: left;
+    float: left;
+}
+
+.uicmpg-search .icon-search {
+    position: relative;
+    /*vertical-align: top;*/
+}
+.uicmpg-search .icon-search:before { cursor: auto; }
+
+.uicmpg-search input {
+    width: 60px;
+    border: none;
+    padding: 5px 5px 5px 0;
+    transition: all .2s ease-out;
+}
+
+.uicmpg-search input:focus {
+    width: 150px;
+    outline: none;
+}
+
+.uicmpg-tool-bar .icon-search:before { content: 'F'; }
+.uicmpg-tool-bar .icon-sort:before { content: 'H'; }
+.uicmpg-tool-bar .icon-eye:before { content: 'E'; }
+.uicmpg-tool-bar .icon-arrow:before { content: 'A'; }
+
+.uicmpg-tool-bar .icon-sort.desc:before { content: 'G'; }
+.uicmpg-tool-bar .icon-eye.hide:before { content: 'D'; }
+.uicmpg-tool-bar .icon-arrow.hide:before { content: 'B'; }
+
+.uicmpg-button .icon { line-height: 26px; }
+
+
+.uicmpg-table .icon-arrow:before { content: 'B'; }
+
+.uicmpg-table.show-fields .icon-arrow:before { content: 'A'; }
+
+.uicmpg-table .icon-eye:before { content: 'D'; }
+
+.uicmpg-table.show-type .icon-eye:before { content: 'E'; }
+
+.uicmpg-scene {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+.uicmpg-scene.activate { box-shadow: inset 0px 0px 6px 2px rgba(54, 151, 205, 0.3); }
+
+.uicmpg-log {
+ padding-bottom: 5px;
+}
+.uicmpg-log span {
+    padding-right: 10px;
+    color: #000;
+}
+.uicmpg-log.error { color: #c0272b;  }
+
+.uicmpg-log.success { color: #689F38;  }
+
+/*
+-------------------------------------------------------------------------*/
+.dotted-line {
+    stroke-dasharray: 5,5;
+}
+.uicmpg-btn-arrow {
+    cursor: pointer;
+}
+
+.uicmpg-schema-viewer {
+    height:		100%;
+    width:		100%;
+    min-height: 705px;
+}
+
+/* loader
+-------------------------------------------------------------------------*/
+.loading .loader { display: block; }
+
+.loader {
+    display: none;
+    position: relative;
+    width: 12px;
+    height: 12px;
+
+    top: 46%;
+    top: -webkit-calc(50% - 6px);
+    top: calc(50% - 6px);
+    left: 46%;
+    left: -webkit-calc(50% - 6px);
+    left: calc(50% - 6px);
+
+    border-radius: 12px;
+    background-color: rgba(3,169,244 ,1);
+    -webkit-transform-origin:  50% 50%;
+    transform-origin:  50% 50% ;
+    -webkit-animation: loader 1s ease-in-out infinite;
+    animation: loader 1s ease-in-out infinite;
+    z-index: 1000;
+}
+
+.loader:before{
+    content: "";
+    position: absolute;
+    background-color: rgba(3,169,244 ,.5);
+    top: 0px;
+    left: -25px;
+    height: 12px;
+    width: 12px;
+    border-radius: 12px;
+}
+
+.loader:after{
+    content: "";
+    position: absolute;
+    background-color: rgba(3,169,244 ,.5);
+    top: 0px;
+    left: 25px;
+    height: 12px;
+    width: 12px;
+    border-radius: 12px;
+}
+
+
+@-webkit-keyframes loader{
+    0%{-webkit-transform:rotate(0deg);}
+    50%{-webkit-transform:rotate(180deg);}
+    100%{-webkit-transform:rotate(180deg);}
+}
+
+@keyframes loader{
+    0%{transform:rotate(0deg);}
+    50%{transform:rotate(180deg);}
+    100%{transform:rotate(180deg);}
+}
+
+/* draw2d
+-------------------------------------------------------------------------*/
+.draw2d_InputPort{
+    fill:#F7F7F7;
+    stroke:#d7d7d7;
+}
+.draw2d_OutputPort{
+    fill:#F7F7F7;
+    stroke:#d7d7d7;
+}
+
+/* CodeMirror
+-------------------------------------------------------------------------*/
+.CodeMirror {
+    border: 1px solid #eee;
+    height: auto !important;
+}

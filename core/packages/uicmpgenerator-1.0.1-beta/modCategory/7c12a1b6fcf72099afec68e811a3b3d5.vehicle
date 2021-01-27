@@ -1,0 +1,59 @@
+<?php return array (
+  'unique_key' => 'category',
+  'preserve_keys' => false,
+  'update_object' => true,
+  'related_objects' => true,
+  'related_object_attributes' => 
+  array (
+    'Snippets' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 'name',
+    ),
+    'Plugins' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 'name',
+    ),
+    'PluginEvents' => 
+    array (
+      'preserve_keys' => true,
+      'update_object' => false,
+      'unique_key' => 
+      array (
+        0 => 'pluginid',
+        1 => 'event',
+      ),
+    ),
+  ),
+  'namespace' => 'uicmpgenerator',
+  'resolve' => 
+  array (
+    0 => 
+    array (
+      'type' => 'file',
+      'body' => '{"source":"uicmpgenerator-1.0.1-beta\\/modCategory\\/7c12a1b6fcf72099afec68e811a3b3d5\\/0\\/","target":"return MODX_CORE_PATH . \'components\\/\';","name":"uicmpgenerator"}',
+    ),
+    1 => 
+    array (
+      'type' => 'file',
+      'body' => '{"source":"uicmpgenerator-1.0.1-beta\\/modCategory\\/7c12a1b6fcf72099afec68e811a3b3d5\\/1\\/","target":"return MODX_ASSETS_PATH . \'components\\/\';","name":"uicmpgenerator"}',
+    ),
+    2 => 
+    array (
+      'type' => 'php',
+      'body' => '{"source":"uicmpgenerator-1.0.1-beta\\/modCategory\\/7c12a1b6fcf72099afec68e811a3b3d5.resolve.tables.resolver","type":"php","name":"resolve.tables"}',
+    ),
+  ),
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '908e535b23a4d6b71a4028398be45cb0',
+  'package' => 'modx',
+  'class' => 'modCategory',
+  'signature' => '7c12a1b6fcf72099afec68e811a3b3d5',
+  'native_key' => 1,
+  'object' => '{"id":1,"parent":0,"category":"UICMPGenerator"}',
+);

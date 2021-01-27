@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'modjwt',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '850cc2125515d6ba2dda80b57b315900',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'ee7d95ea3b79fdddba7c75e61ac2855f',
+  'native_key' => 'modjwt.assetPath',
+  'object' => '{"key":"modjwt.assetPath","value":"","xtype":"textfield","namespace":"modjwt","area":"modjwt_setting","editedon":null,"name":"Development Assets URI","description":"URL to modJWT development assets"}',
+);

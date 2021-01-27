@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'modjwt',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '090a99390bbbf2aff9f4ef873b69c57d',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'bd6f5e24f4b0291e848cbbfe4b88049a',
+  'native_key' => 'modjwt.publickey',
+  'object' => '{"key":"modjwt.publickey","value":"","xtype":"textfield","namespace":"modjwt","area":"modjwt_key","editedon":null,"name":"Public Key","description":"Absolute path to <strong>public key<\\/strong> file for validating asymmetric algorithm (i.e. RS256)"}',
+);

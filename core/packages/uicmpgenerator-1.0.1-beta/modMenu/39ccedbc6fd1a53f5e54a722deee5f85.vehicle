@@ -1,0 +1,30 @@
+<?php return array (
+  'preserve_keys' => true,
+  'update_object' => true,
+  'unique_key' => 'text',
+  'related_objects' => true,
+  'related_object_attributes' => 
+  array (
+    'Action' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 
+      array (
+        0 => 'namespace',
+        1 => 'controller',
+      ),
+    ),
+  ),
+  'namespace' => 'uicmpgenerator',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '2423fe6cff1a51f7c10d1c80e1de2966',
+  'package' => 'modx',
+  'class' => 'modMenu',
+  'signature' => '39ccedbc6fd1a53f5e54a722deee5f85',
+  'native_key' => 'uicmpgenerator',
+  'object' => '{"text":"uicmpgenerator","parent":"components","action":"index","description":"uicmpgenerator.desc","icon":"","menuindex":0,"params":"","handler":"","permissions":"uicmpgenerator","namespace":"uicmpgenerator"}',
+);

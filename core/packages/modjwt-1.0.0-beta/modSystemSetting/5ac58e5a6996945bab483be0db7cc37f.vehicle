@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'modjwt',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '8dde61d41638808e3da082d447df2840',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => '5ac58e5a6996945bab483be0db7cc37f',
+  'native_key' => 'modjwt.enabled',
+  'object' => '{"key":"modjwt.enabled","value":true,"xtype":"combo-boolean","namespace":"modjwt","area":"modjwt_setting","editedon":null,"name":"Panic Button","description":"One click setting to disable modJWT without unistall it"}',
+);

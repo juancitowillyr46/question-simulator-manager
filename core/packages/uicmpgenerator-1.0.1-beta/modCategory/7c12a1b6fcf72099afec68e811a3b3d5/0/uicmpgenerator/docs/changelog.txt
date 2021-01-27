@@ -1,0 +1,9 @@
+Changelog for UiCMPGenerator integration into MODx Revolution.
+
+UiCMPGenerator 1.0.1
+====================================
+- Fixed: Building relations
+
+UiCMPGenerator 1.0.0
+====================================
+- First release

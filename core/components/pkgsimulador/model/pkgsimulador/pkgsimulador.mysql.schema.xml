@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="pkgsimulador" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM" version="1.1">
+	<object class="SimExams" table="sim_exams" extends="xPDOSimpleObject">
+		<field key="uuid" dbtype="varchar" precision="150" phptype="string" null="true" />
+		<field key="client_key" dbtype="varchar" precision="45" phptype="string" null="false" />
+		<field key="name" dbtype="varchar" precision="45" phptype="string" null="true" />
+		<field key="description" dbtype="text" phptype="string" null="true" />
+		<field key="approval_percentage" dbtype="int" precision="11" phptype="integer" null="true" />
+		<field key="duration_time_sec" dbtype="int" precision="11" phptype="integer" null="true" />
+		<field key="total_questions" dbtype="int" precision="11" phptype="integer" null="true" />
+		<field key="createdon" dbtype="datetime" phptype="datetime" null="true" />
+		<field key="createdby" dbtype="int" precision="11" phptype="integer" null="true" />
+		<field key="editedon" dbtype="datetime" phptype="datetime" null="true" />
+		<field key="editedby" dbtype="int" precision="11" phptype="integer" null="true" />
+		<field key="deletedon" dbtype="datetime" phptype="datetime" null="true" />
+		<field key="deletedby" dbtype="int" precision="11" phptype="integer" null="true" />
+		<field key="deleted" dbtype="tinyint" precision="1" phptype="integer" null="true" />
+		<field key="publishedon" dbtype="datetime" phptype="datetime" null="true" />
+		<field key="publishedby" dbtype="int" precision="11" phptype="integer" null="true" />
+		<field key="published" dbtype="tinyint" precision="1" phptype="integer" null="true" />
+		<field key="active" dbtype="tinyint" precision="1" phptype="integer" null="true" />
+		<field key="language" dbtype="varchar" precision="10" phptype="string" null="false" />
+		<field key="support_spanish" dbtype="tinyint" precision="4" phptype="integer" null="false" />
+		<aggregate alias="SimUserApDetail" class="SimUserApDetail" local="id" foreign="exam_id" cardinality="one" owner="foreign" />
+	</object>
+	<object class="SimPlans" table="sim_plans" extends="xPDOSimpleObject">
+		<field key="uuid" dbtype="varchar" precision="150" phptype="string" null="true" />
+		<field key="name" dbtype="varchar" precision="45" phptype="string" null="true" />
+		<field key="description" dbtype="varchar" precision="150" phptype="string" null="true" />
+		<field key="num_products" dbtype="int" precision="11" phptype="integer" null="true" />
+		<field key="expiration_days" dbtype="int" precision="11" phptype="integer" null="true" />
+		<field key="number_attempts" dbtype="int" precision="11" phptype="integer" null="false" />
+		<field key="support_translation" dbtype="tinyint" precision="4" phptype="integer" null="false" />
+		<field key="createdon" dbtype="datetime" phptype="datetime" null="true" />
+		<field key="createdby" dbtype="int" precision="11" phptype="integer" null="true" />
+		<field key="editedon" dbtype="datetime" phptype="datetime" null="true" />
+		<field key="editedby" dbtype="int" precision="11" phptype="integer" null="true" />
+		<field key="deletedon" dbtype="datetime" phptype="datetime" null="true" />
+		<field key="deletedby" dbtype="int" precision="11" phptype="integer" null="true" />
+		<field key="deleted" dbtype="tinyint" precision="1" phptype="integer" null="true" />
+		<field key="publishedon" dbtype="datetime" phptype="datetime" null="true" />
+		<field key="publishedby" dbtype="int" precision="11" phptype="integer" null="true" />
+		<field key="published" dbtype="tinyint" precision="1" phptype="integer" null="true" />
+		<field key="active" dbtype="tinyint" precision="1" phptype="integer" null="true" />
+		<aggregate alias="SimUserAssignedPlan" class="SimUserAssignedPlan" local="id" foreign="plan_id" cardinality="one" owner="foreign" />
+	</object>
+	<object class="SimUserApDetail" table="sim_user_ap_detail" extends="xPDOSimpleObject">
+		<field key="assigned_plan_id" dbtype="int" precision="11" phptype="integer" null="true" />
+		<field key="exam_id" dbtype="int" precision="11" phptype="integer" null="true" />
+		<field key="num_attempts_made" dbtype="int" precision="11" phptype="integer" null="true" />
+		<field key="attempts_made_at" dbtype="datetime" phptype="datetime" null="true" />
+		<aggregate alias="SimExams" class="SimExams" local="exam_id" foreign="id" cardinality="many" owner="local" />
+		<aggregate alias="SimUserAssignedPlan" class="SimUserAssignedPlan" local="assigned_plan_id" foreign="id" cardinality="one" owner="foreign" />
+	</object>
+	<object class="SimUserAssignedPlan" table="sim_user_assigned_plan" extends="xPDOSimpleObject">
+		<field key="user_id" dbtype="int" precision="11" phptype="integer" null="true" />
+		<field key="plan_id" dbtype="int" precision="11" phptype="integer" null="true" />
+		<field key="date_expiry" dbtype="datetime" phptype="datetime" null="true" />
+		<field key="associated_exams" dbtype="text" phptype="string" null="false" />
+		<aggregate alias="SimPlans" class="SimPlans" local="plan_id" foreign="id" cardinality="one" owner="local" />
+		<aggregate alias="SimUserApDetail" class="SimUserApDetail" local="id" foreign="assigned_plan_id" cardinality="many" owner="local" />
+		<aggregate alias="Users" class="modUser" local="user_id" foreign="id" cardinality="one" owner="foreign" />
+	</object>
+	<object class="Users" table="users" extends="xPDOSimpleObject">
+		<field key="username" dbtype="varchar" precision="100" phptype="string" null="false" default="" index="unique" />
+		<field key="password" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
+		<field key="cachepwd" dbtype="varchar" precision="255" phptype="string" null="false" default="" />
+		<field key="class_key" dbtype="varchar" precision="100" phptype="string" null="false" default="modUser" index="index" />
+		<field key="active" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="1" />
+		<field key="remote_key" dbtype="varchar" precision="191" phptype="string" null="true" index="index" />
+		<field key="remote_data" dbtype="text" phptype="string" null="true" />
+		<field key="hash_class" dbtype="varchar" precision="100" phptype="string" null="false" default="hashing.modNative" />
+		<field key="salt" dbtype="varchar" precision="100" phptype="string" null="false" default="" />
+		<field key="primary_group" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="false" default="0" index="index" />
+		<field key="session_stale" dbtype="text" phptype="string" null="true" />
+		<field key="sudo" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="0" />
+		<field key="createdon" dbtype="int" precision="20" phptype="integer" null="false" default="0" />
+
+		<index alias="username" name="username" primary="false" unique="true" type="BTREE" >
+			<column key="username" length="" collation="A" null="false" />
+		</index>
+		<index alias="class_key" name="class_key" primary="false" unique="false" type="BTREE" >
+			<column key="class_key" length="" collation="A" null="false" />
+		</index>
+		<index alias="remote_key" name="remote_key" primary="false" unique="false" type="BTREE" >
+			<column key="remote_key" length="" collation="A" null="true" />
+		</index>
+		<index alias="primary_group" name="primary_group" primary="false" unique="false" type="BTREE" >
+			<column key="primary_group" length="" collation="A" null="false" />
+		</index>
+		<aggregate alias="SimUserAssignedPlan" class="SimUserAssignedPlan" local="id" foreign="user_id" cardinality="one" owner="local" />
+	</object>
+</model>

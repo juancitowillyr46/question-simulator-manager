@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'modjwt',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '326dcf92f1aba34bbf0ac1d638ee7c25',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'bb2337295a3675d43ff113815547f5ce',
+  'native_key' => 'modjwt.corePath',
+  'object' => '{"key":"modjwt.corePath","value":"","xtype":"textfield","namespace":"modjwt","area":"modjwt_setting","editedon":null,"name":"Development Core Path","description":"Absolute path to modJWT develompent core path"}',
+);
